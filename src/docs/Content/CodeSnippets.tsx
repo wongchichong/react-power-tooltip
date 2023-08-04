@@ -1,4 +1,4 @@
-const codeInstallNpm = '$ npm install react-power-tooltip --save';
+const codeInstallNpm = '$ npm install react-power-tooltip --save'
 const codeBasicComp = `class Example extends Component {
   state = {
     show: false
@@ -22,32 +22,32 @@ const codeBasicComp = `class Example extends Component {
     );
   }
 }
-export default Example;`;
+export default Example;`
 
 const codeBasicTp = `{/* Add options/text via span elements */}
 <Tooltip show={this.state.show}>
   <span>Some text</span>
-</Tooltip>`;
+</Tooltip>`
 
 const codeHoverable = `{/* Hoverable */}
 <Tooltip
   show={true}>
   <span>Some text</span>
-</Tooltip>`;
+</Tooltip>`
 
 const codeStatic = `{/* Static */}
 <Tooltip
   show={true}
   static>
     <span>Some text</span>
-</Tooltip>`;
+</Tooltip>`
 
 const codeAlert = `{/* Alert */}
 <Tooltip
   show={true}
   alert="rgb(255, 0, 0)">
     <span>Some text</span>
-</Tooltip>`;
+</Tooltip>`
 
 
 const codeFade = `{/* Fade */}
@@ -55,21 +55,21 @@ const codeFade = `{/* Fade */}
   show={true}
   animation="fade">
   <span>Some text</span>
-</Tooltip>`;
+</Tooltip>`
 
 const codeSlideUpDown = `{/* SlideUpDown */}
 <Tooltip
   show={true}
   animation="slideUpDown">
   <span>Some text</span>
-</Tooltip>`;
+</Tooltip>`
 
 const codeBounce = `{/* Bounce */}
 <Tooltip
   show={true}
   animation="bounce">
   <span>Some text</span>
-</Tooltip>`;
+</Tooltip>`
 
 const codeAlign = `{/* Positions tooltip central on the left side of the target element */}
 <Tooltip
@@ -77,7 +77,7 @@ const codeAlign = `{/* Positions tooltip central on the left side of the target 
   position="left center"
 >
   <span>Some text</span>
-</Tooltip>`;
+</Tooltip>`
 
 const codeDefault = `{/* Default */}
 <Tooltip 
@@ -86,7 +86,7 @@ const codeDefault = `{/* Default */}
   <span>Some text
     <p>Some subtext</p>
   </span>
-</Tooltip>`;
+</Tooltip>`
 
 const codeFont = `{/* Text & Font */}
 <Tooltip 
@@ -96,7 +96,7 @@ const codeFont = `{/* Text & Font */}
   lineSeparated
 >
   <span>Some text</span>
-</Tooltip>`;
+</Tooltip>`
 
 const codeCorners = `{/* Corners & Lines */}
 <Tooltip 
@@ -105,17 +105,17 @@ const codeCorners = `{/* Corners & Lines */}
   lineSeparated="3px solid #ececec"
 >
   <span>Some text</span>
-</Tooltip>`;
+</Tooltip>`
 
 const codeHover = `{/* Hover color */}
 <Tooltip 
   show={true}
   hoverColor="white"
-  hoverBackground="#3b0586"
+  hoverBackground="bg-[#3b0586]"
   lineSeparated="1px solid purple"
 >
   <span>Some text</span>
-</Tooltip>`;
+</Tooltip>`
 
 const codeBackground = `{/* Hover color */}
 <Tooltip 
@@ -124,18 +124,18 @@ const codeBackground = `{/* Hover color */}
   background="#181818"
 >
   <span>Some text</span>
-</Tooltip>`;
+</Tooltip>`
 
 const codeFlat = `{/* Hover color */}
 <Tooltip 
   show={true}
   color="white"
-  hoverBackground="#3b0586"
-  background="#444444"
+  hoverBackground="bg-[#3b0586]"
+  background="bg-[#444444]"
   flat
 >
   <span>Some text</span>
-</Tooltip>`;
+</Tooltip>`
 
 const codeTop = `{/* Arrow top */}
 <Tooltip 
@@ -144,7 +144,7 @@ const codeTop = `{/* Arrow top */}
   lineSeparated
 >
   <span>Some text</span>
-</Tooltip>`;
+</Tooltip>`
 
 const codeCenterV = `{/* Arrow center */}
 <Tooltip 
@@ -153,7 +153,7 @@ const codeCenterV = `{/* Arrow center */}
   lineSeparated
 >
   <span>Some text</span>
-</Tooltip>`;
+</Tooltip>`
 
 const codeBottom = `{/* Arrow bottom */}
 <Tooltip 
@@ -162,7 +162,7 @@ const codeBottom = `{/* Arrow bottom */}
   lineSeparated
 >
   <span>Some text</span>
-</Tooltip>`;
+</Tooltip>`
 
 const codeLeft = `{/* Arrow left */}
 <Tooltip 
@@ -172,7 +172,7 @@ const codeLeft = `{/* Arrow left */}
   lineSeparated
 >
   <span>Some text</span>
-</Tooltip>`;
+</Tooltip>`
 
 const codeRight = `{/* Arrow right */}
 <Tooltip 
@@ -182,7 +182,7 @@ const codeRight = `{/* Arrow right */}
   lineSeparated
 >
   <span>Some text</span>
-</Tooltip>`;
+</Tooltip>`
 
 const codeCenterH = `{/* Arrow center */}
 <Tooltip 
@@ -192,7 +192,7 @@ const codeCenterH = `{/* Arrow center */}
   lineSeparated
 >
   <span>Some text</span>
-</Tooltip>`;
+</Tooltip>`
 
 const codeMoveUpNeg = `{/* Move down into target */}
 <Tooltip 
@@ -202,7 +202,7 @@ const codeMoveUpNeg = `{/* Move down into target */}
   moveUp="-130px"
 >
   <span>Some text</span>
-</Tooltip>`;
+</Tooltip>`
 
 const codeMoveLeftNeg = `{/* Move right into target */}
 <Tooltip 
@@ -212,7 +212,7 @@ const codeMoveLeftNeg = `{/* Move right into target */}
   moveLeft="-200px"
 >
   <span>Some text</span>
-</Tooltip>`;
+</Tooltip>`
 
 const codeMoveUp = `{/* Move up out of target */}
 <Tooltip 
@@ -222,7 +222,7 @@ const codeMoveUp = `{/* Move up out of target */}
   moveUp="40px"
 >
   <span>Some text</span>
-</Tooltip>`;
+</Tooltip>`
 
 const codeMoveLeft = `{/* Move left out of target */}
 <Tooltip 
@@ -232,33 +232,33 @@ const codeMoveLeft = `{/* Move left out of target */}
   moveLeft="40px"
 >
   <span>Some text</span>
-</Tooltip>`;
+</Tooltip>`
 
 export {
-  codeStatic,
-  codeAlert,
-  codeHoverable,
-  codeFade,
-  codeSlideUpDown,
-  codeBounce,
-  codeAlign,
-  codeDefault,
-  codeFont,
-  codeCorners,
-  codeHover,
-  codeBackground,
-  codeFlat,
-  codeTop,
-  codeCenterV,
-  codeBottom,
-  codeLeft,
-  codeCenterH,
-  codeRight,
-  codeMoveUpNeg,
-  codeMoveLeftNeg,
-  codeMoveUp,
-  codeMoveLeft,
-  codeInstallNpm,
-  codeBasicComp,
-  codeBasicTp
-};
+    codeStatic,
+    codeAlert,
+    codeHoverable,
+    codeFade,
+    codeSlideUpDown,
+    codeBounce,
+    codeAlign,
+    codeDefault,
+    codeFont,
+    codeCorners,
+    codeHover,
+    codeBackground,
+    codeFlat,
+    codeTop,
+    codeCenterV,
+    codeBottom,
+    codeLeft,
+    codeCenterH,
+    codeRight,
+    codeMoveUpNeg,
+    codeMoveLeftNeg,
+    codeMoveUp,
+    codeMoveLeft,
+    codeInstallNpm,
+    codeBasicComp,
+    codeBasicTp
+}

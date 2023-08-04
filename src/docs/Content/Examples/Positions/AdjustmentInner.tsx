@@ -25,7 +25,7 @@ export const AdjustmentInner = () => <>
                 textAlign="center"
                 moveLeft="-150px"
                 textboxWidth="120px"
-                hoverBackground="#3b0586"
+                hoverBackground="bg-[#3b0586]"
                 hoverColor="white"
             >
                 <span>
@@ -41,7 +41,7 @@ export const AdjustmentInner = () => <>
                 textAlign="center"
                 moveDown="-100px"
                 textboxWidth="120px"
-                hoverBackground="#3b0586"
+                hoverBackground="bg-[#3b0586]"
                 hoverColor="white"
             >
                 <span>
@@ -57,7 +57,7 @@ export const AdjustmentInner = () => <>
                 textAlign="center"
                 moveRight="-150px"
                 textboxWidth="120px"
-                hoverBackground="#3b0586"
+                hoverBackground="bg-[#3b0586]"
                 hoverColor="white"
             >
                 <span>
@@ -73,7 +73,7 @@ export const AdjustmentInner = () => <>
                 textAlign="center"
                 moveUp="-100px"
                 textboxWidth="120px"
-                hoverBackground="#3b0586"
+                hoverBackground="bg-[#3b0586]"
                 hoverColor="white"
             >
                 <span>

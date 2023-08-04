@@ -9,8 +9,8 @@ export const Colors = () => <>
             <div className="vPlaceHolder">
                 <Tooltip
                     show
-                    hoverBackground="#3b0586"
-                    hoverColor="white"
+                    hoverBackground="bg-[#3b0586]"
+                    hoverColor="text-[white]"
                     lineSeparated="1px solid purple"
                 >
                     <span>Our Technology</span>
@@ -23,8 +23,8 @@ export const Colors = () => <>
             <div className="vPlaceHolder">
                 <Tooltip
                     show
-                    color="white"
-                    backgroundColor="#181818"
+                    color="text-[white]"
+                    backgroundColor="bg-[#181818]"
                     shadowColor="rgba(60, 20, 70, 0.7)"
                 >
                     <span>Our Technology</span>
@@ -38,8 +38,8 @@ export const Colors = () => <>
                 <Tooltip
                     show
                     color="white"
-                    backgroundColor="#444444"
-                    hoverBackground="#3b0586"
+                    backgroundColor="bg-[#444444]"
+                    hoverBackground="bg-[#3b0586]"
                     hoverColor="white"
                     flat
                 >

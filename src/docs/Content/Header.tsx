@@ -14,12 +14,12 @@ export const Header = () => <div className="flexContainer purpleGradient header"
     <h1>
         React-power-
         <span
-            style={{ position: 'relative', display: 'inlineBlock' }}
+            className='relative inline-block'
         >
             tooltip
             <Tooltip
                 show
-                color="black"
+                color="text-[black]"
                 arrowAlign="center"
                 position="bottom center"
                 fontSize="13px"

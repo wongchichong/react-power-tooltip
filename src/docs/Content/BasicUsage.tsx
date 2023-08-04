@@ -21,7 +21,7 @@ export const BasicUsage = () => <>
         .
     </h3>
     <pre>
-        <code className="language-jsx">
+        <code className="language-javascript">
             {codeBasicComp}
         </code>
     </pre>
@@ -29,7 +29,7 @@ export const BasicUsage = () => <>
         3) Add the tooltip inside the target element.
     </h3>
     <pre>
-        <code className="language-jsx">
+        <code className="language-javascript">
             {codeBasicTp}
         </code>
     </pre>

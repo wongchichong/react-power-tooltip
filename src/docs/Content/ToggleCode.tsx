@@ -1,6 +1,7 @@
-import React, { useState, ReactNode } from 'react'
+import React, { useState, ReactNode, useRef, useEffect } from 'react'
 import ArrowUp from '../../assets/arrow-up.svg'
 import ArrowDown from '../../assets/arrow-down.svg'
+import Prism from 'prismjs'
 
 export const ToggleCode = (props: { children?: ReactNode }) => {
     const [open, setOpen] = useState(false)
@@ -10,6 +11,12 @@ export const ToggleCode = (props: { children?: ReactNode }) => {
     //     Prism.highlightAll();
     //   }
 
+    const codeBlockRef = useRef()
+    useEffect(() => {
+        if (codeBlockRef.current)
+            Prism.highlightAll()
+    }, [codeBlockRef])
+
     const clickHandler = () => setOpen(!open)
 
 
@@ -17,7 +24,7 @@ export const ToggleCode = (props: { children?: ReactNode }) => {
     const SVG = open ? ArrowUp : ArrowDown
 
     return <>
-        <div
+        <div ref={codeBlockRef}
             className="toggleCode"
             role="button"
             tabIndex={0}
@@ -25,7 +32,7 @@ export const ToggleCode = (props: { children?: ReactNode }) => {
         >
             <span>{open ? 'Hide Code Example' : 'Show Code Example'}</span>
             <img
-                style={{ marginLeft: '8px', width: '10px' }}
+                className='ml-[8px] w-[10px]'
                 src={SVG}
                 alt=""
             />

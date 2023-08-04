@@ -1,21 +1,37 @@
 import { TextBox } from './Tooltip/TextBox'
 import { Arrow } from './Tooltip/Arrow'
 
-import cssRules from './Tooltip/styles'
+//import cssRules from './Tooltip/styles'
+import '../../dist/output.css'
 
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useCallback, useState, useEffect, useRef } from 'react'
 type TooltipType = {
-    lineSeparated?: boolean | string, position?: string, hoverBackground?: string, backgroundColor?: string, arrowAlign?: string, moveDown?: string, moveRight?: string, moveLeft?: string,
-    moveUp?: string, textAlign?: string, fontFamily?: string, fontWeight?: string, fontSize?: string, color?: string, animation?: string, zIndex?: string, flat?: boolean, show?: boolean,
-    hoverColor?: string, textboxWidth?: string, padding?: string, borderRadius?: string, shadowColor?: string, shadowShape?: string,
+    lineSeparated?: boolean | string, position?: string,
+    /** tailwind */
+    hoverBackground?: string, backgroundColor?: string, arrowAlign?: 'start' | 'end' | 'center', moveDown?: string, moveRight?: string, moveLeft?: string,
+    moveUp?: string, textAlign?: string, fontFamily?: string, fontWeight?: string, fontSize?: string,
+    /** tailwind */
+    color?: string, animation?: string, zIndex?: string, flat?: boolean, show?: boolean,
+    hoverColor?: string,
+    /** no tailwind */
+    textboxWidth?: string, padding?: string,
+    /** tailwind */
+    borderRadius?: string, shadowColor?: string, shadowShape?: string,
     static?: boolean, alert?: string
 }
 
 export const Tooltip = (properties: TooltipType = {}) => {
     const props = {
-        hoverBackground: '#ececec', hoverColor: 'black', backgroundColor: 'white', textboxWidth: '150px', padding: '15px 20px', borderRadius: '5px',
+        /** tailwind */
+        hoverBackground: 'bg-[#ececec]', hoverColor: 'text-[black]', backgroundColor: 'bg-[white]',
+        /** not tailwind */
+        textboxWidth: '150px',
+        /** tailwind */
+        fontSize: '[font-size:inherit]', color: 'text-inherit',
+        padding: 'py-[15px] px-[20px]',
+        borderRadius: 'rounded-[5px]',
         shadowColor: 'rgba(0,0,0,0.251)', shadowShape: '0 8px 15px', moveDown: '0px', moveRight: '0px', moveLeft: '0px', moveUp: '0px',
-        position: 'right center', arrowAlign: 'start', textAlign: 'left', fontFamily: 'inherit', fontWeight: 'bold', fontSize: 'inherit', color: 'inherit',
+        position: 'right center', arrowAlign: 'start', textAlign: 'left', fontFamily: 'inherit', fontWeight: 'bold',
         zIndex: '100', animation: '', ...properties
     }
 
@@ -39,13 +55,13 @@ export const Tooltip = (properties: TooltipType = {}) => {
 
     useEffect(() => {
         // Injecting styles directly into header
-        if (!document.getElementById('rpt-css')) {
-            const $style = document.createElement('style')
-            $style.type = 'text/css'
-            $style.id = 'rpt-css'
-            document.head.appendChild($style)
-            $style.innerHTML = cssRules
-        }
+        // if (!document.getElementById('rpt-css')) {
+        //     const $style = document.createElement('style')
+        //     $style.type = 'text/css'
+        //     $style.id = 'rpt-css'
+        //     document.head.appendChild($style)
+        //     $style.innerHTML = cssRules
+        // }
 
         // Basic prop type checking
         Object.keys(props).forEach((propName) => {
@@ -67,9 +83,9 @@ export const Tooltip = (properties: TooltipType = {}) => {
         if (!props.animation) setMount(false)
     }, [props.show, props.animation])
 
-    const hoverArrowHandler = (bool) => {
-        setHoverArrow(bool)
-    }
+    // const hoverArrowHandler = (bool) => {
+    //     setHoverArrow(bool)
+    // }
 
     // const {
     //     hoverBackground = '#ececec', hoverColor = 'black', backgroundColor = 'white', textboxWidth = '150px', padding = '15px 20px', borderRadius = '5px',
@@ -84,52 +100,49 @@ export const Tooltip = (properties: TooltipType = {}) => {
 
     // Sets if false no line; if true default line; if string custom line;
     const lineSeparated = typeof (lines) === 'boolean'
-        ? '1px solid #ececec' : lines
-
-    function isAlign(str) {
-        return align ? align === str
-            : position === str
-    }
-
-    function isSide(str) {
-        return side === str
-    }
+        ? 'border-[1px solid #ececec]' : lines
 
     const position = {
         side: pos.split(' ')[0],
         align: pos.split(' ')[1],
-        isAlign,
-        isSide
+        isAlign: function (str: string) {
+            return this.align === str
+        },
+        isSide: function (str: string) {
+            return side === str
+        }
     }
 
     const arrow = {
-        isAlign,
-        position: arwAlign
+        position: arwAlign,
+        isAlign: function (str: string) {
+            return this.position === str
+        },
     }
 
     const { side, align } = position
-    const classes = ['rpt-container']
+    const classes = ['absolute flex']
     let tooltipStyle = {}
     let bottom
 
-    const arrange = (top, left, right, height, width, cssSel) => {
-        tooltipStyle = { top, left, right, height, width }
-        classes.push(cssSel)
-    }
+    // const arrange = (top, left, right, height, width, cssSel) => {
+    //     tooltipStyle = { top, left, right, height, width }
+    //     classes.push(cssSel)
+    // }
 
     switch (side) {
         case 'bottom':
-            arrange('100%', '0px', '', '', '100%', 'rpt-bottom')
+            classes.push('top-full left-0 w-full justify-center')
             break
         case 'top':
-            arrange('', '0px', '', '', '100%', 'rpt-top')
+            classes.push('left-0 w-full justify-center')
             bottom = '100%'
             break
         case 'right':
-            arrange('0px', '100%', '', '100%', '', 'rpt-right')
+            classes.push('top-0 left-full h-full justify-start')
             break
         default:
-            arrange('0px', '', '100%', '100%', '', 'rpt-left')
+            classes.push('top-0 right-full h-full justify-end')
             break
     }
 
@@ -153,19 +166,19 @@ export const Tooltip = (properties: TooltipType = {}) => {
 
     switch (align) {
         case 'left':
-            if (onAxis.y) classes.push('rpt-align-left')
+            if (onAxis.y) classes.push('!justify-start')
             break
         case 'right':
-            if (onAxis.y) classes.push('rpt-align-right')
+            if (onAxis.y) classes.push('!justify-end')
             break
         case 'bottom':
-            if (onAxis.x) classes.push('rpt-align-bottom')
+            if (onAxis.x) classes.push('items-end')
             break
         case 'top':
             break
         default:
             if (onAxis.x) {
-                classes.push('rpt-align-center')
+                classes.push('items-center')
                 if (!oneMovePropIsNeg) {
                     move.down *= 2
                     move.up *= 2
@@ -200,12 +213,7 @@ export const Tooltip = (properties: TooltipType = {}) => {
             style={tooltipStyle}
             onAnimationEnd={() => { if (!show && animation) setMount(false) }}
         >
-            <div
-                style={{
-                    display: 'flex',
-                    justifyContent: 'center'
-                }}
-            >
+            <div className='flex justify-center'            >
                 <Arrow
                     isHovered={hoverArrow}
                     hovBkg={hoverBackground}
@@ -221,250 +229,9 @@ export const Tooltip = (properties: TooltipType = {}) => {
                     move={move}
                 />
             </div>
-        </div>
+        </div >
     ) : null
 }
 
 
 
-
-
-// class Tooltip extends Component {
-//   state = {
-//     hoverArrow: false,
-//     show: this.props.show,
-//     mount: true,
-//     hasInitialized: false
-//   }
-
-//   componentWillMount() {
-//     // Injecting styles directly into header
-//     if (!document.getElementById('rpt-css')) {
-//       const $style = document.createElement('style');
-//       $style.type = 'text/css';
-//       $style.id = 'rpt-css';
-//       document.head.appendChild($style);
-//       $style.innerHTML = cssRules;
-//     }
-//     // Basic prop type checking
-//     Object.keys(this.props).forEach((propName) => {
-//       const type = typeof this.props[propName];
-//       const text = `React-power-tooptip: [${propName}] prop should be a`;
-//       if (propName !== 'children' && type !== 'boolean' && type !== 'string') {
-//         // eslint-disable-next-line
-//         console.error(`${text} string (check also units)`);
-//       }
-//     });
-//   }
-
-//   shouldComponentUpdate(nextProps, nextState) {
-//     return nextProps !== this.props
-//       || nextState.hasInitialized !== this.state.hasInitialized
-//       || nextState.mount !== this.state.mount
-//       || nextState.hoverArrow !== this.state.hoverArrow;
-//   }
-
-//   componentDidUpdate() {
-//     /* eslint-disable */
-//     if (!this.state.hasInitialized) this.setState({ show: this.props.show, hasInitialized: true });
-//     if (this.props.show) this.setState({ mount: true });
-//     if (!this.props.animation) this.setState({ mount: false });
-//     /* eslint-disable */
-//   }
-
-//   hoverArrow = (bool) => {
-//     this.setState({ hoverArrow: bool });
-//   }
-
-//   render() {
-//     const {
-//       lineSeparated: lines,
-//       position: pos,
-//       hoverBackground,
-//       backgroundColor,
-//       arrowAlign: arwAlign,
-//       moveDown,
-//       moveRight,
-//       moveLeft,
-//       moveUp,
-//       textAlign,
-//       fontFamily,
-//       fontWeight,
-//       fontSize,
-//       color,
-//       animation,
-//       zIndex,
-//       show,
-//       flat
-//     } = this.props;
-
-//     // Sets if false no line; if true default line; if string custom line;
-//     const lineSeparated = typeof (lines) === 'boolean'
-//       ? '1px solid #ececec' : lines;
-
-//     function isAlign(str) {
-//       return this.align ? this.align === str
-//         : this.position === str;
-//     }
-
-//     function isSide(str) {
-//       return this.side === str;
-//     }
-
-//     const position = {
-//       side: pos.split(' ')[0],
-//       align: pos.split(' ')[1],
-//       isAlign,
-//       isSide
-//     };
-
-//     const arrow = {
-//       isAlign,
-//       position: arwAlign
-//     };
-
-//     const { side, align } = position;
-//     const classes = ['rpt-container'];
-//     let tooltipStyle = {};
-//     let bottom;
-
-//     const arrange = (top, left, right, height, width, cssSel) => {
-//       tooltipStyle = { top, left, right, height, width };
-//       classes.push(cssSel);
-//     };
-
-//     switch (side) {
-//       case 'bottom':
-//         arrange('100%', '0px', '', '', '100%', 'rpt-bottom');
-//         break;
-//       case 'top':
-//         arrange('', '0px', '', '', '100%', 'rpt-top');
-//         bottom = '100%';
-//         break;
-//       case 'right':
-//         arrange('0px', '100%', '', '100%', '', 'rpt-right');
-//         break;
-//       default:
-//         arrange('0px', '', '100%', '100%', '', 'rpt-left');
-//         break;
-//     }
-
-//     const onAxis = {
-//       y: position.isSide('top') || position.isSide('bottom'),
-//       x: position.isSide('left') || position.isSide('right')
-//     };
-
-//     arrow.position = onAxis.y ? `h-${arrow.position}` : `v-${arrow.position}`;
-
-//     const num = str => Number(str.slice(0, -2));
-//     const move = {
-//       down: num(moveDown),
-//       up: num(moveUp),
-//       left: num(moveLeft),
-//       right: num(moveRight)
-//     };
-
-//     const oneMovePropIsNeg = move.down < 0 || move.up < 0
-//       || move.left < 0 || move.right < 0;
-
-//     switch (align) {
-//       case 'left':
-//         if (onAxis.y) classes.push('rpt-align-left');
-//         break;
-//       case 'right':
-//         if (onAxis.y) classes.push('rpt-align-right');
-//         break;
-//       case 'bottom':
-//         if (onAxis.x) classes.push('rpt-align-bottom');
-//         break;
-//       case 'top':
-//         break;
-//       default:
-//         if (onAxis.x) {
-//           classes.push('rpt-align-center');
-//           if (!oneMovePropIsNeg) {
-//             move.down *= 2;
-//             move.up *= 2;
-//           }
-//         }
-//         if (onAxis.y && !oneMovePropIsNeg) {
-//           move.right *= 2;
-//           move.left *= 2;
-//         }
-//         break;
-//     }
-
-//     const adjustment = `${move.down}px ${move.left}px ${move.up}px ${move.right}px`;
-
-//     tooltipStyle = {
-//       ...tooltipStyle,
-//       zIndex,
-//       color,
-//       bottom,
-//       fontSize,
-//       textAlign,
-//       fontFamily,
-//       fontWeight,
-//       padding: oneMovePropIsNeg ? null : adjustment,
-//       margin: oneMovePropIsNeg ? adjustment : null,
-//       animation: show ? `rpt-${animation} 0.2s` : `rpt-${animation}-out 0.15s`
-//     };
-
-//     return ((!animation && show) || (this.state.show && this.state.mount)) ? (
-//       <div
-//         className={classes.join(' ')}
-//         style={tooltipStyle}
-//         onAnimationEnd={() => { if (!show && animation) this.setState({ mount: false }) }}
-//       >
-//         <div
-//           style={{
-//             display: 'flex',
-//             justifyContent: 'center'
-//           }}
-//         >
-//           <Arrow
-//             isHovered={this.state.hoverArrow}
-//             hovBkg={hoverBackground}
-//             bkgCol={backgroundColor}
-//             flat={flat}
-//           />
-//           <TextBox
-//             {...this.props}
-//             hoverArrow={this.hoverArrow}
-//             lines={lineSeparated}
-//             pos={position}
-//             arw={arrow}
-//             move={move}
-//           />
-//         </div>
-//       </div>
-//     ) : null;
-//   }
-// }
-
-// // Specifies the default values for props:
-// Tooltip.defaultProps = {
-//   hoverBackground: '#ececec',
-//   hoverColor: 'black',
-//   backgroundColor: 'white',
-//   textboxWidth: '150px',
-//   padding: '15px 20px',
-//   borderRadius: '5px',
-//   shadowColor: 'rgba(0,0,0,0.251)',
-//   shadowShape: '0 8px 15px',
-//   moveDown: '0px',
-//   moveRight: '0px',
-//   moveLeft: '0px',
-//   moveUp: '0px',
-//   position: 'right center',
-//   arrowAlign: 'start',
-//   textAlign: 'left',
-//   fontFamily: 'inherit',
-//   fontWeight: 'bold',
-//   fontSize: 'inherit',
-//   color: 'inherit',
-//   zIndex: '100',
-//   animation: ''
-// };
-
-// export default Tooltip;

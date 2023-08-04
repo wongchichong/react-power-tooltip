@@ -28,7 +28,7 @@ export const AdjustmentOuter = () => <>
                 textAlign="center"
                 textboxWidth="120px"
                 moveLeft="40px"
-                hoverBackground="#3b0586"
+                hoverBackground="bg-[#3b0586]"
                 hoverColor="white"
             >
                 <span>
@@ -44,7 +44,7 @@ export const AdjustmentOuter = () => <>
                 textAlign="center"
                 textboxWidth="120px"
                 moveDown="40px"
-                hoverBackground="#3b0586"
+                hoverBackground="bg-[#3b0586]"
                 hoverColor="white"
             >
                 <span>
@@ -60,7 +60,7 @@ export const AdjustmentOuter = () => <>
                 textAlign="center"
                 textboxWidth="120px"
                 moveRight="40px"
-                hoverBackground="#3b0586"
+                hoverBackground="bg-[#3b0586]"
                 hoverColor="white"
             >
                 <span>
@@ -76,7 +76,7 @@ export const AdjustmentOuter = () => <>
                 textAlign="center"
                 textboxWidth="120px"
                 moveUp="40px"
-                hoverBackground="#3b0586"
+                hoverBackground="bg-[#3b0586]"
                 hoverColor="white"
             >
                 <span>

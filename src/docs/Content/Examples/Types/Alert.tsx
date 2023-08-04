@@ -50,7 +50,7 @@ export const Alert = () => {
                     Shopping Cart
                     <Tooltip
                         show={alternate}
-                        hoverBackground="#3b0586"
+                        hoverBackground="bg-[#3b0586]"
                         hoverColor="white"
                         textboxWidth="150px"
                         animation="bounce"

@@ -40,7 +40,7 @@ export const AdvancedUsage = () => <>
         pre- or suffixes) to your tooltip via the animation prop.
     </p>
     <pre>
-        <code className="language-jsx">
+        <code className="language-javascript">
             {`<Tooltip
     show={this.state.show}
     animation='slideUpDown'

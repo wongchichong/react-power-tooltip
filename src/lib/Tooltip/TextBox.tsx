@@ -230,6 +230,7 @@
 
 
 import React, { useState, useEffect, useRef } from 'react'
+import clsx from 'clsx'
 
 export const TextBox = (props) => {
     const [hoverIndex, setHoverIndex] = useState(null)
@@ -283,6 +284,7 @@ export const TextBox = (props) => {
         borderRadius,
         hoverBackground,
         hoverColor,
+        color,
         alert,
         flat,
         children
@@ -292,26 +294,27 @@ export const TextBox = (props) => {
     const lastIndex = numberChildren - 1
 
     const adjChildren = React.Children.map(children, (child, index) => {
-        const style = {
-            backgroundColor,
-            padding,
-            whiteSpace: undefined,
-            color: undefined,
-            borderBottom: undefined,
-        }
-        if (width === 'auto') style.whiteSpace = 'nowrap'
+        const className = [padding]
+        //     whiteSpace: undefined,
+        //     color: undefined,
+        //     borderBottom: undefined,
+        // }
+        if (width === 'auto') className.push('whitespace-nowrap')
+
         if (!tpStatic && hoverIndex === index) {
-            style.color = hoverColor
-            style.backgroundColor = hoverBackground
+            className.push(hoverColor)
+            className.push(hoverBackground)
+        } else {
+            className.push(color)
+            className.push(backgroundColor)
         }
-        if (lineSeparated && lastIndex !== index) {
-            style.borderBottom = lineSeparated
-        }
+
+        const style = { borderBottom: (lineSeparated && lastIndex !== index) ? lineSeparated : undefined }
 
         const childProps = {
             ...child.props,
             ref: span => spanHeightsRef.current[`span${index + 1}`] = span,
-            style,
+            className: className.join(' '), style,
             onMouseOver: () => onSpanHover(index, lastIndex, numberChildren)
         }
         return React.cloneElement(child, childProps)
@@ -407,38 +410,30 @@ export const TextBox = (props) => {
 
     return (
         <div
-            className={`rpt-textbox-container ${alertStyle}`}
+            className={`absolute animation:none ${alertStyle}`}
             style={{
                 ...boxStyle,
-                position: 'absolute',
                 boxShadow: alertShadow,
                 padding: `${move.down}px ${move.left}px ${move.up}px ${move.right}px`
             }}
         >
             <div
-                className="rpt-shadow-container"
+                className={clsx(`absolute animation:none  w-full h-full z-0`, borderRadius)}
                 style={{
-                    borderRadius,
                     boxShadow,
                     height: `calc(100% - ${noNeg(move.down) + noNeg(move.up)}px)`,
                     width: `calc(100% - ${noNeg(move.left) + noNeg(move.right)}px)`
                 }}
             />
             <div
-                className="rpt-textbox"
+                className={clsx(`relative z-[2] 
+[&_span]:block [&_span]:cursor-pointer [&_span]:box-border
+[&_span_p]:text-[90%] [&_span_p]:font-normal [&_span_p]:leading-[12px] [&_span_p]:text-inherit [&_span_p]:opacity-60 [&_span_p]:p-0 [&_span_p]:m-0 [&_span_p]:mt-[6px] }
+`, backgroundColor, borderRadius)}
                 onMouseLeave={unsetHover}
-                style={{
-                    backgroundColor,
-                    borderRadius
-                }}
             >
                 <div
-                    className={!tpStatic ? 'rpt-hover' : null}
-                    style={{
-                        borderRadius,
-                        overflow: 'hidden'
-                    }}
-                >
+                    className={clsx(!tpStatic ? '[&_span]:cursor-pointer' : null, borderRadius, 'overflow-hidden')}                >
                     {adjChildren}
                 </div>
             </div>

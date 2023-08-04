@@ -2469,7 +2469,7 @@ const TextBox = (props) => {
     pos: position,
     lines: lineSeparated,
     static: tpStatic,
-    textBoxWidth: width,
+    textboxWidth: width,
     shadowColor: shCol,
     shadowShape: shShape,
     move,
@@ -2756,11 +2756,54 @@ z-index: 1;
   100% { opacity: 0}
 }
 `;
-const Tooltip = (props) => {
+const Tooltip = (properties = {}) => {
+  const props = {
+    hoverBackground: "#ececec",
+    hoverColor: "black",
+    backgroundColor: "white",
+    textboxWidth: "150px",
+    padding: "15px 20px",
+    borderRadius: "5px",
+    shadowColor: "rgba(0,0,0,0.251)",
+    shadowShape: "0 8px 15px",
+    moveDown: "0px",
+    moveRight: "0px",
+    moveLeft: "0px",
+    moveUp: "0px",
+    position: "right center",
+    arrowAlign: "start",
+    textAlign: "left",
+    fontFamily: "inherit",
+    fontWeight: "bold",
+    fontSize: "inherit",
+    color: "inherit",
+    zIndex: "100",
+    animation: "",
+    ...properties
+  };
+  const {
+    position: pos,
+    lineSeparated: lines,
+    arrowAlign: arwAlign,
+    hoverBackground,
+    backgroundColor,
+    moveDown,
+    moveRight,
+    moveLeft,
+    moveUp,
+    textAlign,
+    fontFamily,
+    fontWeight,
+    fontSize,
+    color,
+    zIndex,
+    animation,
+    flat
+    // shadowColor, shadowShape, textboxWidth, padding, borderRadius, hoverColor,
+  } = props;
   const [hoverArrow, setHoverArrow] = reactExports.useState(false);
   const [show, setShow] = reactExports.useState(props.show);
   const [mount, setMount] = reactExports.useState(true);
-  const [hasInitialized, setHasInitialized] = reactExports.useState(false);
   reactExports.useEffect(() => {
     if (!document.getElementById("rpt-css")) {
       const $style = document.createElement("style");
@@ -2778,18 +2821,14 @@ const Tooltip = (props) => {
     });
   });
   reactExports.useEffect(() => {
-    if (!hasInitialized) {
-      setShow(props.show);
-      setHasInitialized(true);
-    }
-  }, [hasInitialized, props.show]);
+    setShow(props.show);
+  }, [props.show]);
   reactExports.useEffect(() => {
     if (props.show)
       setMount(true);
     if (!props.animation)
       setMount(false);
   }, [props.show, props.animation]);
-  const { lineSeparated: lines, position: pos, hoverBackground, backgroundColor, arrowAlign: arwAlign, moveDown, moveRight, moveLeft, moveUp, textAlign, fontFamily, fontWeight, fontSize, color, animation, zIndex, flat } = props;
   const lineSeparated = typeof lines === "boolean" ? "1px solid #ececec" : lines;
   function isAlign(str) {
     return align ? align === str : position === str;
@@ -2916,7 +2955,7 @@ const Tooltip = (props) => {
               TextBox,
               {
                 ...props,
-                hoverArrow,
+                hoverArrow: setHoverArrow,
                 lines: lineSeparated,
                 pos: position,
                 arw: arrow,

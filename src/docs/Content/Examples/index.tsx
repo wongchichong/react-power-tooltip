@@ -51,17 +51,17 @@ export const Examples = () => <>
         <div className="codeRow">
             <div>
                 <pre>
-                    <code className="language-jsx">
+                    <code className="language-javascript">
                         {codeHoverable}
                     </code>
                 </pre>
                 <pre>
-                    <code className="language-jsx">
+                    <code className="language-javascript">
                         {codeStatic}
                     </code>
                 </pre>
                 <pre>
-                    <code className="language-jsx">
+                    <code className="language-javascript">
                         {codeAlert}
                     </code>
                 </pre>
@@ -90,17 +90,17 @@ export const Examples = () => <>
         <div className="codeRow">
             <div>
                 <pre>
-                    <code className="language-jsx">
+                    <code className="language-javascript">
                         {codeFade}
                     </code>
                 </pre>
                 <pre>
-                    <code className="language-jsx">
+                    <code className="language-javascript">
                         {codeSlideUpDown}
                     </code>
                 </pre>
                 <pre>
-                    <code className="language-jsx">
+                    <code className="language-javascript">
                         {codeBounce}
                     </code>
                 </pre>
@@ -120,17 +120,17 @@ export const Examples = () => <>
         <div className="codeRow">
             <div>
                 <pre>
-                    <code className="language-jsx">
+                    <code className="language-javascript">
                         {codeDefault}
                     </code>
                 </pre>
                 <pre>
-                    <code className="language-jsx">
+                    <code className="language-javascript">
                         {codeFont}
                     </code>
                 </pre>
                 <pre>
-                    <code className="language-jsx">
+                    <code className="language-javascript">
                         {codeCorners}
                     </code>
                 </pre>
@@ -150,17 +150,17 @@ export const Examples = () => <>
         <div className="codeRow">
             <div>
                 <pre>
-                    <code className="language-jsx">
+                    <code className="language-javascript">
                         {codeHover}
                     </code>
                 </pre>
                 <pre>
-                    <code className="language-jsx">
+                    <code className="language-javascript">
                         {codeBackground}
                     </code>
                 </pre>
                 <pre>
-                    <code className="language-jsx">
+                    <code className="language-javascript">
                         {codeFlat}
                     </code>
                 </pre>
@@ -212,17 +212,17 @@ export const Examples = () => <>
         <div className="codeRow">
             <div>
                 <pre>
-                    <code className="language-jsx">
+                    <code className="language-javascript">
                         {codeTop}
                     </code>
                 </pre>
                 <pre>
-                    <code className="language-jsx">
+                    <code className="language-javascript">
                         {codeCenterV}
                     </code>
                 </pre>
                 <pre>
-                    <code className="language-jsx">
+                    <code className="language-javascript">
                         {codeBottom}
                     </code>
                 </pre>
@@ -238,17 +238,17 @@ export const Examples = () => <>
         <div className="codeRow">
             <div>
                 <pre>
-                    <code className="language-jsx">
+                    <code className="language-javascript">
                         {codeLeft}
                     </code>
                 </pre>
                 <pre>
-                    <code className="language-jsx">
+                    <code className="language-javascript">
                         {codeCenterH}
                     </code>
                 </pre>
                 <pre>
-                    <code className="language-jsx">
+                    <code className="language-javascript">
                         {codeRight}
                     </code>
                 </pre>
@@ -283,7 +283,7 @@ export const Examples = () => <>
         appear. To position the arrow relative to that textbox side use the arrowAlign prop.
     </h3>
     <pre>
-        <code className="language-jsx">
+        <code className="language-javascript">
             {codeAlign}
         </code>
     </pre>
@@ -318,12 +318,12 @@ export const Examples = () => <>
         <div className="codeRow">
             <div>
                 <pre>
-                    <code className="language-jsx">
+                    <code className="language-javascript">
                         {codeMoveUpNeg}
                     </code>
                 </pre>
                 <pre>
-                    <code className="language-jsx">
+                    <code className="language-javascript">
                         {codeMoveLeftNeg}
                     </code>
                 </pre>
@@ -350,12 +350,12 @@ export const Examples = () => <>
         <div className="codeRow">
             <div>
                 <pre>
-                    <code className="language-jsx">
+                    <code className="language-javascript">
                         {codeMoveUp}
                     </code>
                 </pre>
                 <pre>
-                    <code className="language-jsx">
+                    <code className="language-javascript">
                         {codeMoveLeft}
                     </code>
                 </pre>
