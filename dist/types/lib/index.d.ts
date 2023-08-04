@@ -1,0 +1,20 @@
+export declare const Tooltip: (props: {
+    lineSeparated: string;
+    position: string;
+    hoverBackground: string;
+    backgroundColor: string;
+    arrowAlign: string;
+    moveDown: string;
+    moveRight: string;
+    moveLeft: string;
+    moveUp: string;
+    textAlign: string;
+    fontFamily: string;
+    fontWeight: string;
+    fontSize: string;
+    color: string;
+    animation: string;
+    zIndex: string;
+    flat;
+    show;
+}) => any;
