@@ -31,32 +31,24 @@ npm install react-power-tooltip
 
 ```jsx
 import React, { Component } from "react";
-import Tooltip from "react-power-tooltip";
+import { Tooltip } from "react-power-tooltip";
 
-class Example extends Component {
-    state = {
-        show: false
-    }
+export const Example = () => {
+    const [show, setShow] = useState(false)
 
-    showTooltip = bool => {
-        this.setState({ show: bool })
-    }
-    render() {
-        return (
-            <div 
-                style={{ position: 'relative' }}
-                onMouseOver={() => this.showTooltip(true)} 
-                onMouseLeave={() => this.showTooltip(false)}
-            >
-                <Tooltip show={this.state.show}>
-                    <span>Option 1</span>
-                    <span>Option 2</span>
-                </Tooltip>
-            </div>
-        );
-    }
+    const showTooltip = (bool:boolean) => setShow(bool)
+
+    return <div 
+            style={{ position: 'relative' }}
+            onMouseOver={() => showTooltip(true)} 
+            onMouseLeave={() => showTooltip(false)}
+        >
+            <Tooltip show={show}>
+                <span>Option 1</span>
+                <span>Option 2</span>
+            </Tooltip>
+        </div>
 }
-export default Example;
 ```
 ## API
 

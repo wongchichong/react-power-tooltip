@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Animation } from './Animation'
 import Types from './Types/Types'
-import Alert from './Types/Alert'
+import { Alert } from './Types/Alert'
 import { Colors } from './Customization/Colors'
 import { Shapes } from './Customization/Shapes'
 import { AlignPositions } from './Positions/Align'
