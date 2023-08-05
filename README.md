@@ -11,7 +11,8 @@ A **powerful** and **elegant** alternative for all your tooltips and menu needs.
 - **Fully Customizable** - Easily change default settings via props
 - **Reliable Positioning** - Align your tooltip to your
 target element with ease
-- **Advanced Customization** - Add your own animations and styles via separate CSS files
+- Tailwind CSS
+- React Hooks
 
 ## DEMO
 
@@ -22,14 +23,14 @@ Check out the [documentation &amp; demo](https://justinrhodes1.github.io/react-p
 ### NPM
 
 ```bash
-npm install react-power-tooltip
+pnpm install react-power-tooltip
 ```
 
 ## Usage
 
 **Important**: Set the position of the hoverable parent component to *relative*.
 
-```jsx
+```tsx
 import React, { Component } from "react";
 import { Tooltip } from "react-power-tooltip";
 
@@ -64,7 +65,7 @@ export const Example = () => {
 | hoverColor      | string: hex colors                                        | '#000000'           | Font color on hover                                                     |
 | backgroundColor | string: hex colors                                        | '#ffffff'           | Background color                                                        |
 | alert           | string: rgb colors                                        | false               | Pulse animation                                                         |
-| textBoxWidth    | string: px _or_ auto                                      | '150px'             | Width of the text box                                                   |
+| textboxWidth    | string: px _or_ auto                                      | '150px'             | Width of the text box                                                   |
 | padding         | string: px                                                | '15px 20px'         | Padding of text                                                         |
 | borderRadius    | string: px                                                | '5px'               | Radius of corners                                                       |
 | zIndex          | string: number                                            | '100'               | Z-index of tooltip                                                      |
